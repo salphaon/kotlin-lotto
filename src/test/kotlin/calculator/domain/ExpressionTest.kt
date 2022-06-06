@@ -1,20 +1,17 @@
-package calculator
+package calculator.domain
 
-import calculator.domain.Expression
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-internal class StringAddCalculatorTest {
-
-    private val calculator = StringAddCalculator()
+internal class ExpressionTest {
 
     @ParameterizedTest
     @MethodSource("expressionArguments")
-    fun `Expression을 계산할 수 있다`(expression: Expression, expected: Int) {
-        val result = calculator.add(expression)
+    fun `Expression은 합계를 가진다`(expression: Expression, expected: Int) {
+        val result = expression.sum
 
         assertThat(result).isEqualTo(expected)
     }
